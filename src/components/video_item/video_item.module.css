@@ -8,16 +8,16 @@
     width: 48%;
     margin-left: 1.4rem;
     transition: transform 205ms ease-in-out;
-    box-shadow: 7px 6px 5px 1px rgba(115,115,115,0.26);
 }
 .li:hover{
     /* border: 1px solid red; */
+    box-shadow: 7px 6px 5px 1px rgba(115,115,115,0.26);
     background-color: rgba(250, 221, 221, 0.282);
     cursor: pointer;
     transform: scale(1.01)
 }
 .img{
-    width:40%;
+    width:30%;
 }
 .textBox{
     box-sizing: border-box;
