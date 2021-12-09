@@ -6,8 +6,14 @@
     /* padding: 0.3rem 1rem 0.3rem 1rem; */
     list-style: none;
     width: 48%;
-    margin-left: 1.4rem;
+    margin-left: 1rem;
     transition: transform 205ms ease-in-out;
+}
+.li.grid{
+    width: 48%;
+}
+.li.list{
+    width: 100%;
 }
 .li:hover{
     /* border: 1px solid red; */
