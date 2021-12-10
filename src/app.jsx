@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import VideoList from './components/video_list/video_list';
 import SearchBar from './components/search_bar/search_bar';
 import styles from '../src/app.module.css';
@@ -10,17 +10,20 @@ function App({ youtube }) {
   const selcetVideo = (video) => {
     setSelectedVideo(video);
   }
-  const search = query => {
+  const search = useCallback(query => {
     youtube
       .search(query)
-      .then(video => setVideos(video))
-  }
+      .then(video =>
+        setVideos(video),
+        setSelectedVideo(null))
+  }, [youtube]);
 
   useEffect(() => { //mount가 되었을 때만 호출이 되도록 [] 추가
     youtube
       .mostPopular()
       .then(video => setVideos(video))
-  }, [])
+  }, [youtube])
+
   return (
     <div className={styles.app}>
       <SearchBar onSearch={search} />,
@@ -30,7 +33,10 @@ function App({ youtube }) {
             <DetailsPage video={selectedVideo} />
           </div>)}
         <div className={styles.list}>
-          <VideoList videos={videos} onVideoClieck={selcetVideo} display={selectedVideo ? 'list' : 'grid'} />
+          <VideoList
+            videos={videos}
+            onVideoClieck={selcetVideo}
+            display={selectedVideo ? 'list' : 'grid'} />
         </div>
       </section>
     </div>
